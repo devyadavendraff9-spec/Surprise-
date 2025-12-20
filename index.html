@@ -4,42 +4,57 @@
 <meta charset="UTF-8">
 <title>Just a moment</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
   body {
+    margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background: #fff;
     font-family: sans-serif;
-    background: #ffffff;
   }
   button {
     font-size: 22px;
-    padding: 14px 30px;
+    padding: 14px 32px;
     border: none;
     border-radius: 8px;
     background: #000;
     color: #fff;
-    cursor: pointer;
+  }
+  video {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 </style>
 </head>
+
 <body>
 
-<button onclick="openCamera()">Click here</button>
-
-<input
-  type="file"
-  accept="image/*"
-  capture="user"
-  id="cameraInput"
-  style="display:none"
-/>
+<button id="startBtn">Click here</button>
+<video id="video" autoplay playsinline></video>
 
 <script>
-function openCamera() {
-  document.getElementById('cameraInput').click();
-}
+const btn = document.getElementById("startBtn");
+const video = document.getElementById("video");
+
+btn.onclick = async () => {
+  btn.style.display = "none";
+  video.style.display = "block";
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "user" }, // 👈 FRONT CAMERA
+      audio: false
+    });
+    video.srcObject = stream;
+  } catch (e) {
+    alert("Permission needed");
+  }
+};
 </script>
 
 </body>
