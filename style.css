@@ -1,68 +1,44 @@
-* {
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
   margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #1d2671, #c33764);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: Arial;
+  overflow: hidden;
 }
 
-.container {
-  perspective: 1200px;
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-h1 {
-  color: white;
-  text-align: center;
-}
-
-.card {
-  background: white;
+.app {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255,255,255,0.9);
   padding: 20px;
+  width: 90%;
+  max-width: 520px;
   border-radius: 15px;
-  transform: rotateX(8deg) rotateY(-8deg);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-  transition: transform 0.5s;
-}
-
-.card:hover {
-  transform: rotateX(0deg) rotateY(0deg);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
 }
 
 input {
   width: 100%;
-  border: none;
-  outline: none;
-  text-align: center;
 }
 
 button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 10px;
-  background: #1d2671;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  margin-top: 10px;
 }
 
-button:hover {
-  background: #c33764;
-} 
+.dark {
+  background: #111;
+  color: white;
+}
+.dark .app {
+  background: rgba(0,0,0,0.85);
+}
