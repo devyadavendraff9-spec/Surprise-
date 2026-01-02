@@ -1,61 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Just a moment</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff;
-    font-family: sans-serif;
-  }
-  button {
-    font-size: 22px;
-    padding: 14px 32px;
-    border: none;
-    border-radius: 8px;
-    background: #000;
-    color: #fff;
-  }
-  video {
-    display: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>3D Study Planner</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<button id="startBtn">Click here</button>
-<video id="video" autoplay playsinline></video>
+  <div class="container">
+    <h1>📘 Study Planner</h1>
 
-<script>
-const btn = document.getElementById("startBtn");
-const video = document.getElementById("video");
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Subject</th>
+            <th>Topic</th>
+            <th>Hours</th>
+            <th>Deadline</th>
+            <th>❌</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
 
-btn.onclick = async () => {
-  btn.style.display = "none";
-  video.style.display = "block";
+      <button onclick="addRow()">➕ Add Row</button>
+    </div>
+  </div>
 
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: "user" }, // 👈 FRONT CAMERA
-      audio: false
-    });
-    video.srcObject = stream;
-  } catch (e) {
-    alert("Permission needed");
-  }
-};
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
