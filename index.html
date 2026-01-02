@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>3D Study Planner</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>3D Study Planner</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1>📘 Study Planner</h1>
+<canvas id="bg"></canvas>
 
-    <div class="card">
-      <table>
-        <thead>
-          <tr>
-            <th>Subject</th>
-            <th>Topic</th>
-            <th>Hours</th>
-            <th>Deadline</th>
-            <th>❌</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody"></tbody>
-      </table>
+<div class="app">
+  <h1>📘 Study Planner</h1>
 
-      <button onclick="addRow()">➕ Add Row</button>
-    </div>
+  <!-- AUTH -->
+  <div id="auth">
+    <input id="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="signup()">Signup</button>
+    <button onclick="login()">Login</button>
   </div>
 
-  <script src="script.js"></script>
+  <!-- PLANNER -->
+  <div id="planner" hidden>
+    <button onclick="toggleTheme()">🌙 / ☀</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Topic</th>
+          <th>Hours</th>
+          <th>Date</th>
+          <th>❌</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+
+    <button onclick="addRow()">➕ Add Row</button>
+
+    <h3>📊 Progress</h3>
+    <canvas id="chart"></canvas>
+
+    <h3>🤖 AI Suggestion</h3>
+    <p id="ai"></p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
+
+<script src="firebase.js" type="module"></script>
+<script src="mountains.js"></script>
+<script src="app.js"></script>
+
 </body>
 </html>
